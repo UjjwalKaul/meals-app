@@ -19,6 +19,7 @@ export default function CategoriesScreen() {
         return item.id;
       }}
       renderItem={renderCategoryItem}
+      numColumns={2}
     />
   );
 }
