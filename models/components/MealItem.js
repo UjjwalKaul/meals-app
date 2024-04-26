@@ -9,6 +9,7 @@ import {
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 export default function MealItem({
+  id,
   title,
   imageUrl,
   duration,
@@ -17,7 +18,9 @@ export default function MealItem({
 }) {
   const navigation = useNavigation();
   function pressHandler() {
-    navigation.navigate('MealDetails');
+    navigation.navigate('MealDetail', {
+      mealId: id,
+    });
   }
   return (
     <View style={styles.meanItem}>
