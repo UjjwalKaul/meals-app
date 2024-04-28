@@ -11,15 +11,12 @@ export default function MealDetailsScreen({ route, navigation }) {
   const { mealId } = route.params;
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
   const mealIsFav = favoriteMealsCtx.ids.includes(mealId);
-  const [btncolor, setBtnColor] = useState('white');
 
   function changeFavoritesHandler() {
-    if (mealIsFav) {
+    if (mealIsFav === true) {
       favoriteMealsCtx.removeFavorite(mealId);
-      setBtnColor('white');
     } else {
       favoriteMealsCtx.addFavorite(mealId);
-      setBtnColor('yellow');
     }
   }
 
@@ -29,7 +26,7 @@ export default function MealDetailsScreen({ route, navigation }) {
         return (
           <IconButton
             icon={mealIsFav ? 'star' : 'star-outline'}
-            color={btncolor}
+            color={mealIsFav ? 'yellow' : 'white'}
             onPress={changeFavoritesHandler}
           />
         );
