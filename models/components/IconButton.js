@@ -2,7 +2,6 @@ import { Pressable, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 export default function IconButton({ icon, onPress, color }) {
-  const [btncolor, setColor] = useState(color);
   return (
     <Pressable
       onPress={onPress}
@@ -12,12 +11,12 @@ export default function IconButton({ icon, onPress, color }) {
       <Ionicons
         name={icon}
         size={24}
-        color={btncolor}
-        onPress={() => {
-          setColor((prev) => {
-            return prev === 'white' ? 'yellow' : 'white';
-          });
-        }}
+        color={color}
+        // onPress={() => {
+        //   setColor((prev) => {
+        //     return prev === 'white' ? 'yellow' : 'white';
+        //   });
+        // }}
       />
     </Pressable>
   );
