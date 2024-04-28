@@ -19,7 +19,7 @@ export default function MealItem({
 }) {
   const navigation = useNavigation();
   function pressHandler() {
-    navigation.navigate('MealDetail', {
+    navigation.navigate('Meal Details', {
       mealId: id,
     });
   }
