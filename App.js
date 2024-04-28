@@ -8,6 +8,7 @@ import MealDetailsScreen from './screens/MealDetailsScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import FavoritesScreen from './screens/FavoritesScreen';
 import { Ionicons } from '@expo/vector-icons';
+import FavoritesContextProvider from './store/favorites-context';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -51,27 +52,32 @@ export default function App() {
   return (
     <>
       <StatusBar style="dark" />
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="MealsCategories"
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: '#351401',
-            },
-            headerTintColor: 'white',
-            contentStyle: { backgroundColor: '#3f2f25' },
-          }}>
-          <Stack.Screen
-            name="All Categories"
-            component={DrawerNavigator}
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
-          <Stack.Screen name="Meal Details" component={MealDetailsScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <FavoritesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="MealsCategories"
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: '#351401',
+              },
+              headerTintColor: 'white',
+              contentStyle: { backgroundColor: '#3f2f25' },
+            }}>
+            <Stack.Screen
+              name="All Categories"
+              component={DrawerNavigator}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="MealsOverview"
+              component={MealsOverviewScreen}
+            />
+            <Stack.Screen name="Meal Details" component={MealDetailsScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 }
